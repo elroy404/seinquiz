@@ -1,87 +1,42 @@
-body{
-  width: 100%;
-  margin: 0 auto;
-  background-color:#FAFAFA;
-  postition: relative;
-  /*border-style: solid;
-  border-width: .2em;
-  border-color: red;*/
+html{
+  height: 100%;
 }
 
-/*.container{
-  width: 100%;
-  margin: 0 auto;
-}*/
+body{
+  min-height: 100%;
+  background-color: #013A6B;
+  background-image: -webkit-linear-gradient(80deg, #FAFAFA 50%, #263238 50%);
+  overflow: hidden;
+}
 
-#top-half{
-  height: 10em;
-  background-color: #1A2350;
-  color: white;
-  box-sizing: border-box;
-  /*border-style: solid;
-  border-width: .2em;
-  border-color: yellow;*/
+
+
+#questionaire{
+  height: auto;
+  width: 60%;
+  margin: 20em auto;
+  background-color: #FAFAFA;
+  box-shadow: 0 10px 20px
+    rgba(0,0,0,0.19), 0 6px 6px
+    rgba(0,0,0,0.23);
 }
 
 #question{
-  height: auto;
-  width: 75%;
-  margin: -55px auto;
-  padding: 45px 10px 30px 10px;
+  padding: 20px 10px;
+  font-size: 2em;
   font-family: helvetica;
   text-align: center;
-  color: white;
-  background-color: #303F89;
-  /*border-style: solid;
-  border-width: .2em;
-  border-color: black;*/
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 10px 20px
-    rgba(0,0,0,0.19), 0 6px 6px
-    rgba(0,0,0,0.23);
 }
 
-#answers{
-  height: auto;
-  width: 75%;
-  margin: 55px auto;
-  padding: 45px 10px 30px 10px;
+#answers {
+  padding: 5px 10px;
+}
+
+#answers ul{
+  list-style-type: none;
   font-family: helvetica;
+  font-size: 1.5em;
   color: #000000;
-  background-color: #FAFAFA;
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 10px 20px
-    rgba(0,0,0,0.19), 0 6px 6px
-    rgba(0,0,0,0.23);
-}
-
-/*#bottom-half{
-  height: 20em;
-  background-color: #FAFAFA;
-  box-sizing: border-box;
-  z-index: 1;
-}*/
-
-/*buttons*/
-.question-number{
-  height: 100px;
-  width: 100px;
-  background-color: #FFC107;
-  border-radius: 50%;
-}
-
-.score{
-  height: 100px;
-  width: 100px;
-  background-color: #FFC107;
-  border-radius: 50%;
-}
-
-.new-quiz{
-  height: 100px;
-  width: 100px;
-  background-color: #FFC107;
-  border-radius: 50%;
+  text-align: left;
+  margin-left: 30%;
 }
