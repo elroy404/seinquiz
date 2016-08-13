@@ -3,7 +3,8 @@
 }
 
 html{
-  width: 100%
+  width: 100%;
+  background-color: #E0E0E0;
 }
 
 .container{
@@ -44,20 +45,25 @@ html{
   float: left;
 }
 
-#question{
-  height: auto;
+#quiz-content{
+  height: 100%;
   width: 100%;
+  margin: 0 auto;
+  background-color: #FAFAFA;
+}
+
+#question{
   font-family: helvetica;
   text-align: center;
   float: left;
+  display: none;
 }
 
 #answers {
-  height: auto;
-  width: 100%;
   text-align: left;
   float: left;
   margin: 0 auto;
+  display: none;
 }
 
 #answers ul{
@@ -67,9 +73,13 @@ html{
 }
 
 /*buttons*/
-#new-quiz{
-  height: 100px;
-  width: 100px;
+.start-game{
+  height: 90px;
+  width: 200px;
   background-color: #FFC107;
-  border-radius: 50%;
+}
+
+#start{
+  font-family: helvetica;
+  font-size: 5em;
 }

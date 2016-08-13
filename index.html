@@ -5,31 +5,36 @@
   <title>Levels Jerry</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/font-awesome-4.6.3/css/font-awesome.min.css">
-
+  <link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
 </head>
 <body>
-  <!-- <div id="new-quiz">
-    <p>new game</p>
-  </div> -->
+
   <div class="container">
     <div id="score-keeper">
       <div id="score-board">
         <p>score</p>
-        <p>3</p>
+        <p id="score"> </p>
       </div>
       <div id="question-number">
-        <p>question</p>
-        <p>4</p>
+        <p>level</p>
+        <p id="level"> </p>
       </div>
     </div>
-    <div id="question">What is a good sentence to use for this question? </div>
-    <div id="answers">
-      <ul>
-        <li>This</li>
-        <li>Maybe This</li>
-        <li>Perhaps this</li>
-        <li>All these</li>
-      </ul>
+    <div id="quiz-content">
+      <button class="start-game">
+        <span id="start">Start</span>
+      </button>
+
+      <div id="question">This is a question</div>
+      <div id="answers">
+        <form action="" id="answers-selection">
+          <label><input type="radio" name="ques-1" value="0">Jerry</input></label><br>
+          <!-- <label><input type="radio" name="ques-1" value="1"> </input></label><br>
+          <label><input type="radio" name="ques-1" value="2"> </input></label><br>
+          <label><input type="radio" name="ques-1" value="3"> </input></label><br> -->
+          <input type="submit" value="submit">
+        </form>
+      </div>
     </div>
   </div>
 
