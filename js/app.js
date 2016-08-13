@@ -1,15 +1,23 @@
 $(document).ready(function(){
+  var level = 0;
 
+  // starts the new game once button is clicked
   $(".start-game").click(function(){
     $(this).hide();
     $("#question").show();
     $("#answers").show();
   });
 
+  // generates a new question pulling quiz variables by [level]
+  function qnaGenerator(){
+    
+  }
+
   // $(".start-game").on("click",function(){
   //   console.log("clicked");
   // });
 
+  // holds all the quiz questions
   var quiz = [
     {
       question: 'Who is master of their domain?',
