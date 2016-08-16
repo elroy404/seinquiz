@@ -1,21 +1,51 @@
+//hide previous 'level' > append new 'level'
+//store users answers / var
+//compare users answers to correct /function
+
+
+
 $(document).ready(function(){
+  var randomNum;
+  var dupNum = [];
   var level = 0;
 
   // starts the new game once button is clicked
   $(".start-game").click(function(){
-    $(this).hide();
-    $("#question").show();
-    $("#answers").show();
+    // $(this).hide();
+    // $("#question").show();
+    // $("#answers").show();
+    numGenerator();
+    duplicateNum();
   });
 
-  // generates a new question pulling quiz variables by [level]
+  // generates a new level pulling quiz variables by [level]
   function qnaGenerator(){
-    
+
   }
 
-  // $(".start-game").on("click",function(){
-  //   console.log("clicked");
-  // });
+  //checks for duplicates
+  function duplicateNum(){
+    dupNum.push(randomNum);
+    console.log(dupNum);
+    for (var i = 0; i < dupNum.length; i++){
+      console.log(randomNum + "::" + dupNum[i]);
+      if (randomNum !== dupNum[i]){
+        dupNum.push(randomNum);
+        console.log("added:" + dupNum);
+      }
+      else{
+        console.log("duplicate" + dupNum[]);
+        numGenerator();
+      }
+    }
+    console.log(dupNum);
+    console.log("-------------");
+  }
+
+  function numGenerator(){
+    randomNum = Math.floor((Math.random()*4)+1);
+    console.log("random #: " + randomNum);
+  }
 
   // holds all the quiz questions
   var quiz = [
