@@ -7,8 +7,12 @@ html{
   background-color: #E0E0E0;
 }
 
+body{
+  height: 100%;
+}
+
 .container{
-  height: 15em;
+  height: 17em;
   width: 75%;
   margin: 7em auto;
   position: relative;
@@ -33,7 +37,15 @@ html{
   color: white;
   text-align: center;
   float: left;
-  border-right: 1px solid black;
+}
+
+#score-board p{
+  margin: 0.8rem;
+}
+
+#score{
+  height: auto;
+  width: auto;
 }
 
 #question-number{
@@ -45,6 +57,15 @@ html{
   float: left;
 }
 
+#question-number p{
+  margin: 0.8rem;
+}
+
+#level{
+  height: auto;
+  width: auto;
+}
+
 #quiz-content{
   height: 100%;
   width: 100%;
@@ -52,34 +73,48 @@ html{
   background-color: #FAFAFA;
 }
 
-#question{
+#questions-section{
+  height: auto;
+  width: 100%;
   font-family: helvetica;
   text-align: center;
   float: left;
   display: none;
 }
 
-#answers {
-  text-align: left;
+#answers-section {
+  height: auto;
+  width: 100%;
   float: left;
-  margin: 0 auto;
   display: none;
 }
 
-#answers ul{
-  list-style-type: none;
-  font-family: helvetica;
-  color: #000000;
+#answers{
+  height: auto;
+  width: 50%;
+  margin: 0 auto;
 }
 
 /*buttons*/
 .start-game{
-  height: 90px;
-  width: 200px;
+  height: auto;
+  width: 100%;
+  float: left;
+}
+
+#start-button{
   background-color: #FFC107;
+  width: 25%;
+  margin: 2em 37.5%;
 }
 
 #start{
   font-family: helvetica;
   font-size: 5em;
+}
+
+#submit{
+  width: 50%;
+  margin: 1em 25%;
+  float: left;
 }

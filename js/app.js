@@ -2,50 +2,48 @@
 //store users answers / var
 //compare users answers to correct /function
 
-
-
 $(document).ready(function(){
   var randomNum;
   var dupNum = [];
   var level = 0;
+  var question = level;
+  var score = 0;
+
+  $("#level").append(question);
+  $("#score").append(score);
 
   // starts the new game once button is clicked
   $(".start-game").click(function(){
-    // $(this).hide();
-    // $("#question").show();
-    // $("#answers").show();
-    numGenerator();
-    duplicateNum();
+    $(this).hide();
+    $("#level").append(question+1);
+    // console.log(question+1);
+    qnaGenerator();
   });
 
-  // generates a new level pulling quiz variables by [level]
+  // generates a new level, pulling quiz variables by [level]
   function qnaGenerator(){
+    var maxAnswer = 3;
+    var addedQ = "<p id=\"ques-" + level + "\">" + quiz[level].question + "</p>";
+    var addedA = "";
+    var counter = 0;
+    console.log(addedQ);
+    $("#questions-section").append(addedQ);
+    $("#questions-section").show();
+    $("#answers-section").show();
 
-  }
-
-  //checks for duplicates
-  function duplicateNum(){
-    dupNum.push(randomNum);
-    console.log(dupNum);
-    for (var i = 0; i < dupNum.length; i++){
-      console.log(randomNum + "::" + dupNum[i]);
-      if (randomNum !== dupNum[i]){
-        dupNum.push(randomNum);
-        console.log("added:" + dupNum);
-      }
-      else{
-        console.log("duplicate" + dupNum[]);
-        numGenerator();
-      }
+    //need to reset counter of answers each time a question is generated
+    for(counter; counter <= maxAnswer; counter++){
+      addedA = "<label><input type=\"radio\" name=\"ques-" + level + "\" value=\""+ counter +"\">"+ quiz[level].answers[counter] +"</input></label><br>";
+      console.log(addedA);
+      $("#answers").append(addedA);
     }
-    console.log(dupNum);
-    console.log("-------------");
   }
 
-  function numGenerator(){
-    randomNum = Math.floor((Math.random()*4)+1);
-    console.log("random #: " + randomNum);
-  }
+  //checks if answer is correct
+  // $("#submit").click(function(){
+  //
+  // });
+
 
   // holds all the quiz questions
   var quiz = [
@@ -106,3 +104,45 @@ $(document).ready(function(){
     }];
 
 });
+
+//make a whole separate array to hold a temp value then add temp value to
+//dupNum if there is duplicate
+/*
+checks for duplicates
+function duplicateNum(){
+  var dupLen = dupNum.length;
+  for(var i = 0; i <= 4; i++){
+    if(dupNum[i] === randomNum){
+      console.log("pop");
+      console.log(dupNum[i]);
+    }
+    else{
+      console.log("okay");
+      dupNum.push(randomNum);
+    }
+  }
+ // --------------------------
+  dupNum.push(randomNum);
+  console.log(dupNum);
+  for (var i = 0; i < dupNum.length; i++){
+    console.log(randomNum + "::" + dupNum[i]);
+    if (randomNum == dupNum[i]){
+      dupNum.pop();
+      console.log(dupNum);
+    }
+    else{
+      console.log("duplicate" + dupNum[]);
+      numGenerator();
+    }
+  }
+  console.log(dupNum);
+  console.log("-------------");
+}
+*/
+/*
+// generates a random number
+function numGenerator(){
+  randomNum = Math.floor((Math.random()*4)+1);
+  console.log("random #: " + randomNum);
+}
+*/
