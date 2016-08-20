@@ -1,13 +1,14 @@
 //hide previous 'level' > append new 'level'
-//store users answers / var
-//compare users answers to correct /function
+
+
 
 $(document).ready(function(){
   var randomNum;
-  var dupNum = [];
   var level = 0;
   var question = level;
   var score = 0;
+  var dupNum = [];
+  var userAnswers = [];
 
   $("#level").append(question);
   $("#score").append(score);
@@ -23,7 +24,7 @@ $(document).ready(function(){
   // generates a new level, pulling quiz variables by [level]
   function qnaGenerator(){
     var maxAnswer = 3;
-    var addedQ = "<p id=\"ques-" + level + "\">" + quiz[level].question + "</p>";
+    var addedQ = "<p class=\"ques-" + level + "\" id=\"ques-" + level + "\">" + quiz[level].question + "</p>";
     var addedA = "";
     var counter = 0;
     console.log(addedQ);
@@ -39,11 +40,35 @@ $(document).ready(function(){
     }
   }
 
-  //checks if answer is correct
-  // $("#submit").click(function(){
-  //
-  // });
+  //stores users answers / var
+  $("#submit").click(function(event){
+    event.preventDefault();
+    var selected = $("input[name=ques-" + level + "]:checked").val();
+    //makes sure that a radio button is selected
+    if(selected == undefined){
+      alert("please select an answer");
+    }
+    else{
+      userAnswers.push(selected);
+      console.log(userAnswers);
+      nextLevel();
+    }
+  });
 
+  //moves user to next question
+  function nextLevel(){
+    var hideQues = ".ques-" + level;
+    var hideAns = "";
+    $(hideQues).hide();
+    level =+ 1;
+    qnaGenerator();
+  }
+
+  //checks if answer is correct
+  //compare users answers to correct /function
+  function answerCheck(){
+
+  }
 
   // holds all the quiz questions
   var quiz = [
