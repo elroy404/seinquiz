@@ -1,7 +1,5 @@
 //hide previous 'level' > append new 'level'
 
-
-
 $(document).ready(function(){
   var randomNum;
   var level = 0;
@@ -16,26 +14,24 @@ $(document).ready(function(){
   // starts the new game once button is clicked
   $(".start-game").click(function(){
     $(this).hide();
-    $("#level").append(question+1);
-    // console.log(question+1);
     qnaGenerator();
   });
 
   // generates a new level, pulling quiz variables by [level]
   function qnaGenerator(){
+    //max number of answers to a question
     var maxAnswer = 3;
-    var addedQ = "<p class=\"ques-" + level + "\" id=\"ques-" + level + "\">" + quiz[level].question + "</p>";
+    var addedQ = "<p id=\"ques-" + level + "\">" + quiz[level].question + "</p>";
     var addedA = "";
     var counter = 0;
-    console.log(addedQ);
+    question = level + 1;
+    $("#level").append(question);
     $("#questions-section").append(addedQ);
     $("#questions-section").show();
     $("#answers-section").show();
-
     //need to reset counter of answers each time a question is generated
     for(counter; counter <= maxAnswer; counter++){
       addedA = "<label><input type=\"radio\" name=\"ques-" + level + "\" value=\""+ counter +"\">"+ quiz[level].answers[counter] +"</input></label><br>";
-      console.log(addedA);
       $("#answers").append(addedA);
     }
   }
@@ -51,23 +47,71 @@ $(document).ready(function(){
     else{
       userAnswers.push(selected);
       console.log(userAnswers);
-      nextLevel();
+      answerCheck();
     }
+  });
+
+  $("#next-question").click(function(event){
+    event.preventDefault();
+    level += 1;
+    console.log("level: " + level);
+    clearIntermission();
+    nextLevel();
   });
 
   //moves user to next question
   function nextLevel(){
-    var hideQues = ".ques-" + level;
-    var hideAns = "";
-    $(hideQues).hide();
-    level =+ 1;
-    qnaGenerator();
+    if(question < 5){
+      $("#questions-section").empty();
+      $("#answers").empty();
+      $("#level").empty();
+      qnaGenerator();
+    }
+    else {
+      console.log("quiz is finished");
+      hideQA();
+      //finished the quiz
+      //?? whats the point of using an anon function
+      (function(){
+        $('#intermission').show();
+        $('#caption').append("Your final score is " + score);
+        $('#next-question').hide();
+        $('.start-game').show();
+      })();
+    }
+  }
+
+  function feedback(){
+    $('#intermission').show();
+    $('#caption').append(quiz[level].explain);
   }
 
   //checks if answer is correct
-  //compare users answers to correct /function
+  //compare users answers to correct / function
   function answerCheck(){
+    if(userAnswers[level] == quiz[level].correctAnswer){
+      console.log("correct!");
+      score += 1;
+      $('#score').replaceWith("<p id='score'>" + score + "</p>");
+      hideQA();
+      feedback();
+    }
+    else{
+      console.log("wrong");
+      hideQA();
+      feedback();
+    }
+  }
 
+  function hideQA(){
+    $('#questions-section').hide();
+    $('#answers-section').hide();
+  }
+
+  function clearIntermission(){
+    $('#image').empty();
+    $('#caption').empty();
+    $('#intermission').hide();
   }
 
   // holds all the quiz questions
@@ -81,7 +125,7 @@ $(document).ready(function(){
         'Kramer'
       ],
       correctAnswer: 0,
-      explain: "Although George is named the winner, he later confeses that he cheated making Jerry he winner."
+      explain: "Although George is named the winner, he later confeses that he cheated, making Jerry the winner."
     },
     {
       question: 'What type of desert got Jerry sick?',

@@ -95,6 +95,15 @@ body{
   margin: 0 auto;
 }
 
+#intermission{
+  height: auto;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  float: left;
+  display: none;
+}
+
 /*buttons*/
 .start-game{
   height: auto;
