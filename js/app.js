@@ -26,7 +26,6 @@ $(document).ready(function(){
     var addedA = "";
     var counter = 0;
     question = level + 1;
-
     $("#level").append(question);
     $("#questions-section").append(addedQ);
     $("#questions-section").show();
@@ -84,6 +83,7 @@ $(document).ready(function(){
 
   function feedback(){
     $('#intermission').show();
+    $('#next-question').show();
     $('#caption').append(quiz[level].explain);
   }
 
@@ -122,14 +122,9 @@ $(document).ready(function(){
     $('#questions-section').empty();
     $('#answers').empty();
     $('#score').empty();
+    $("#score").append(score);
     $('#level').empty();
     clearIntermission();
-    console.log("level: " + level);
-    console.log("question: " + question);
-    console.log("score: " + score);
-    console.log("dupnum: " + dupNum);
-    console.log("useranswers: " + userAnswers);
-    console.log("----------");
   }
 
   // holds all the quiz questions
