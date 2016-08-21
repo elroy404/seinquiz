@@ -14,6 +14,7 @@ $(document).ready(function(){
   // starts the new game once button is clicked
   $(".start-game").click(function(){
     $(this).hide();
+    clearGame();
     qnaGenerator();
   });
 
@@ -25,6 +26,7 @@ $(document).ready(function(){
     var addedA = "";
     var counter = 0;
     question = level + 1;
+
     $("#level").append(question);
     $("#questions-section").append(addedQ);
     $("#questions-section").show();
@@ -68,7 +70,6 @@ $(document).ready(function(){
       qnaGenerator();
     }
     else {
-      console.log("quiz is finished");
       hideQA();
       //finished the quiz
       //?? whats the point of using an anon function
@@ -90,14 +91,12 @@ $(document).ready(function(){
   //compare users answers to correct / function
   function answerCheck(){
     if(userAnswers[level] == quiz[level].correctAnswer){
-      console.log("correct!");
       score += 1;
       $('#score').replaceWith("<p id='score'>" + score + "</p>");
       hideQA();
       feedback();
     }
     else{
-      console.log("wrong");
       hideQA();
       feedback();
     }
@@ -112,6 +111,25 @@ $(document).ready(function(){
     $('#image').empty();
     $('#caption').empty();
     $('#intermission').hide();
+  }
+
+  function clearGame(){
+    level = 0;
+    question = level;
+    score = 0;
+    dupNum = [];
+    userAnswers = [];
+    $('#questions-section').empty();
+    $('#answers').empty();
+    $('#score').empty();
+    $('#level').empty();
+    clearIntermission();
+    console.log("level: " + level);
+    console.log("question: " + question);
+    console.log("score: " + score);
+    console.log("dupnum: " + dupNum);
+    console.log("useranswers: " + userAnswers);
+    console.log("----------");
   }
 
   // holds all the quiz questions
